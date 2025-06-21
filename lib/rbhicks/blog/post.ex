@@ -26,12 +26,12 @@ defmodule Rbhicks.Blog.Post do
     end
   end
 
-  # relationships do
-  #   has_many :tag_relationships, Rbhicks.Blog.PostTag
+  relationships do
+    has_many :tag_relationships, Rbhicks.Blog.PostTag
 
-  #   many_to_many :tags, Rbhicks.Blog.Tag do
-  #     join_relationship :tag_relationships
-  #     destination_attribute_on_join_resource :tag_id
-  #   end
-  # end
+    many_to_many :tags, Rbhicks.Blog.Tag do
+      join_relationship :tag_relationships
+      destination_attribute_on_join_resource :tag_id
+    end
+  end
 end
