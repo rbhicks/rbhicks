@@ -45,7 +45,8 @@ config :spark,
 
 config :rbhicks,
   ecto_repos: [Rbhicks.Repo],
-  generators: [timestamp_type: :utc_datetime]
+  generators: [timestamp_type: :utc_datetime],
+  ash_domains: [Rbhicks.Blog]
 
 # Configures the endpoint
 config :rbhicks, RbhicksWeb.Endpoint,
