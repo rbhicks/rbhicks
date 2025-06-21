@@ -5,6 +5,7 @@ defmodule Rbhicks.Blog do
   resources do
     resource Rbhicks.Blog.Post
     resource Rbhicks.Blog.Tag
+    resource Rbhicks.Blog.PostTag
     # resource Rbhicks.Blog.Tag
     # resource Rbhicks.Blog.PostTag
   end
