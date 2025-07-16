@@ -10,9 +10,11 @@ defmodule RbhicksWeb.BlogPostLive.Index do
       <.header>
         Listing Blog posts
         <:actions>
-          <.button variant="primary" navigate={~p"/blog_posts/new"}>
-            <.icon name="hero-plus" /> New Blog post
-          </.button>
+          <%= if @current_scope do %>
+            <.button variant="primary" navigate={~p"/blog_posts/new"}>
+              <.icon name="hero-plus" /> New Blog post
+            </.button>
+          <% end %>
         </:actions>
       </.header>
 
