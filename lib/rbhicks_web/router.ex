@@ -21,9 +21,6 @@ defmodule RbhicksWeb.Router do
     pipe_through :browser
 
     get "/", PageController, :home
-
-    live "/blog_posts", BlogPostLive.Index, :index
-    live "/blog_posts/:id", BlogPostLive.Show, :show
   end
 
   # Other scopes may use custom stacks.
@@ -61,6 +58,9 @@ defmodule RbhicksWeb.Router do
       live "/blog_posts/new", BlogPostLive.Form, :new
       live "/blog_posts/:id/edit", BlogPostLive.Form, :edit
     end
+
+    live "/blog_posts", BlogPostLive.Index, :index
+    live "/blog_posts/:id", BlogPostLive.Show, :show
 
     post "/users/update-password", UserSessionController, :update_password
   end
