@@ -29,15 +29,19 @@ defmodule RbhicksWeb.BlogPostLive.Index do
           <div class="sr-only">
             <.link navigate={~p"/blog_posts/#{blog_post}"}>Show</.link>
           </div>
-          <.link navigate={~p"/blog_posts/#{blog_post}/edit"}>Edit</.link>
+          <%= if @current_scope do %>
+            <.link navigate={~p"/blog_posts/#{blog_post}/edit"}>Edit</.link>
+          <% end %>
         </:action>
         <:action :let={{id, blog_post}}>
-          <.link
-            phx-click={JS.push("delete", value: %{id: blog_post.id}) |> hide("##{id}")}
-            data-confirm="Are you sure?"
-          >
-            Delete
-          </.link>
+          <%= if @current_scope do %>
+            <.link
+              phx-click={JS.push("delete", value: %{id: blog_post.id}) |> hide("##{id}")}
+              data-confirm="Are you sure?"
+            >
+              Delete
+            </.link>
+          <% end %>  
         </:action>
       </.table>
     </Layouts.app>
