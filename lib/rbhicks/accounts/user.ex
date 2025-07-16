@@ -5,6 +5,7 @@ defmodule Rbhicks.Accounts.User do
   schema "users" do
     field :email, :string
     field :password, :string, virtual: true, redact: true
+    field :role, Ecto.Enum, values: [:user, :admin]
     field :hashed_password, :string, redact: true
     field :confirmed_at, :utc_datetime
     field :authenticated_at, :utc_datetime, virtual: true
