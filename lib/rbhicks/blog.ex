@@ -18,7 +18,15 @@ defmodule Rbhicks.Blog do
 
   """
   def list_blog_posts do
-    Repo.all(BlogPost)
+    BlogPost
+    |> sort()
+    |> Repo.all()
+  end
+
+  def list_blog_posts(opts) do
+    BlogPost
+    |> sort(opts)
+    |> Repo.all()
   end
 
   @doc """
@@ -100,5 +108,15 @@ defmodule Rbhicks.Blog do
   """
   def change_blog_post(%BlogPost{} = blog_post, attrs \\ %{}) do
     BlogPost.changeset(blog_post, attrs)
+  end
+
+  defp sort(query, %{sort_by: sort_by, sort_dir: sort_dir})
+       when sort_by in [:updated_at] and sort_dir in [:asc, :desc] do
+    order_by(query, {^sort_dir, ^sort_by})
+  end
+
+  defp sort(query) do
+    query
+    |> order_by({:desc, :updated_at})
   end
 end

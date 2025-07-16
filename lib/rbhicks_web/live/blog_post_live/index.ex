@@ -41,7 +41,7 @@ defmodule RbhicksWeb.BlogPostLive.Index do
             >
               Delete
             </.link>
-          <% end %>  
+          <% end %>
         </:action>
       </.table>
     </Layouts.app>
