@@ -59,9 +59,6 @@ defmodule RbhicksWeb.Router do
       live "/blog_posts/:id/edit", BlogPostLive.Form, :edit
     end
 
-    live "/blog_posts", BlogPostLive.Index, :index
-    live "/blog_posts/:id", BlogPostLive.Show, :show
-
     post "/users/update-password", UserSessionController, :update_password
   end
 
@@ -73,6 +70,9 @@ defmodule RbhicksWeb.Router do
       live "/users/register", UserLive.Registration, :new
       live "/users/log-in", UserLive.Login, :new
       live "/users/log-in/:token", UserLive.Confirmation, :new
+
+      live "/blog_posts", BlogPostLive.Index, :index
+      live "/blog_posts/:id", BlogPostLive.Show, :show
     end
 
     post "/users/log-in", UserSessionController, :create
