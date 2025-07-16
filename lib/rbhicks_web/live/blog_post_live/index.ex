@@ -10,7 +10,7 @@ defmodule RbhicksWeb.BlogPostLive.Index do
       <.header>
         Listing Blog posts
         <:actions>
-          <%= if @current_scope do %>
+          <%= if not (@current_scope == nil) and @current_scope.user.role == :admin do %>
             <.button variant="primary" navigate={~p"/blog_posts/new"}>
               <.icon name="hero-plus" /> New Blog post
             </.button>
@@ -29,12 +29,12 @@ defmodule RbhicksWeb.BlogPostLive.Index do
           <div class="sr-only">
             <.link navigate={~p"/blog_posts/#{blog_post}"}>Show</.link>
           </div>
-          <%= if @current_scope do %>
+          <%= if not (@current_scope == nil) and @current_scope.user.role == :admin do %>
             <.link navigate={~p"/blog_posts/#{blog_post}/edit"}>Edit</.link>
           <% end %>
         </:action>
         <:action :let={{id, blog_post}}>
-          <%= if @current_scope do %>
+          <%= if not (@current_scope == nil) and @current_scope.user.role == :admin do %>
             <.link
               phx-click={JS.push("delete", value: %{id: blog_post.id}) |> hide("##{id}")}
               data-confirm="Are you sure?"
