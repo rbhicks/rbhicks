@@ -58,9 +58,7 @@ defmodule RbhicksWeb.Router do
       live "/users/settings", UserLive.Settings, :edit
       live "/users/settings/confirm-email/:token", UserLive.Settings, :confirm_email
 
-#      live "/blog_posts", BlogPostLive.Index, :index
       live "/blog_posts/new", BlogPostLive.Form, :new
-#      live "/blog_posts/:id", BlogPostLive.Show, :show
       live "/blog_posts/:id/edit", BlogPostLive.Form, :edit
     end
 
