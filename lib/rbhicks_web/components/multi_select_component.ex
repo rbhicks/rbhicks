@@ -15,12 +15,22 @@ defmodule RbhicksWeb.MultiSelectComponent do
   end
 
   @impl true
-  def handle_event("tags-changed", %{"tags" => tags}, socket) do
-    send(self(), {:tags_changed, tags})
-    {:noreply, socket}
+  def handle_event("tags-changed", %{"tags" => newly_selected_tag}, %{assigns: %{tags: tags}} = socket) do
+    updated_tags = if not Enum.member?(tags, newly_selected_tag) do
+      [newly_selected_tag|tags]
+    else
+      tags
+    end
+    send(self(), {:tags_changed, updated_tags})
+    {
+      :noreply,
+      socket
+      |> assign(:tags, updated_tags)
+    }  
   end
-  
-  def mount(_params, _session, socket) do
+
+  @impl true
+  def mount(socket) do
     {:ok,
      socket
      |> assign(:tags, [])
