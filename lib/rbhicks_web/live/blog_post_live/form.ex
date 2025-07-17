@@ -3,6 +3,7 @@ defmodule RbhicksWeb.BlogPostLive.Form do
 
   alias Rbhicks.Blog
   alias Rbhicks.Blog.BlogPost
+  alias RbhicksWeb.MultiSelectComponent
 
   @impl true
   def render(assigns) do
@@ -16,6 +17,7 @@ defmodule RbhicksWeb.BlogPostLive.Form do
       <.form for={@form} id="blog_post-form" phx-change="validate" phx-submit="save">
         <.input field={@form[:title]} type="text" label="Title" />
         <.input field={@form[:content]} type="textarea" label="Content" />
+        <.live_component module={MultiSelectComponent} id="tags" />
         <footer>
           <.button phx-disable-with="Saving..." variant="primary">Save Blog post</.button>
           <.button navigate={return_path(@return_to, @blog_post)}>Cancel</.button>
