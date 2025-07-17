@@ -9,14 +9,14 @@ defmodule RbhicksWeb.MultiSelectComponent do
   def render(assigns) do
     ~H"""
     <div>
-      <CoreComponents.input type="select" name="tags" options={[:ack, :oop, :zorg]} value="" phx-change="tags-changed" phx-target={@myself} />
+      <CoreComponents.input type="select" name="tags" options={[:ack, :oop, :zorg]} prompt="select tag(s)" value="" phx-change="tags-changed" phx-target={@myself} />
     </div>
     """
   end
 
   @impl true
-  def handle_event("tags-changed", %{"tags" => newly_selected_tag}, %{assigns: %{tags: tags}} = socket) do
-    updated_tags = if not Enum.member?(tags, newly_selected_tag) do
+  def handle_event("tags-changed", %{"tags" => newly_selected_tag}, %{assigns: %{tags: tags}} = socket) do    
+    updated_tags = if not Enum.member?(tags, newly_selected_tag) and not (newly_selected_tag == "") do
       [newly_selected_tag|tags]
     else
       tags
