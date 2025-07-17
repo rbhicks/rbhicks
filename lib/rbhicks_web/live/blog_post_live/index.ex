@@ -2,7 +2,6 @@ defmodule RbhicksWeb.BlogPostLive.Index do
   use RbhicksWeb, :live_view
 
   alias Rbhicks.Blog
-  alias RbhicksWeb.MultiSelectComponent
 
   @impl true
   def render(assigns) do
@@ -45,7 +44,6 @@ defmodule RbhicksWeb.BlogPostLive.Index do
           <% end %>
         </:action>
       </.table>
-      <.live_component module={MultiSelectComponent} id="tags" />
     </Layouts.app>
     """
   end
