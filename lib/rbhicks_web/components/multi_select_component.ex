@@ -15,16 +15,8 @@ defmodule RbhicksWeb.MultiSelectComponent do
   end
 
   @impl true
-  def handle_event("tags-changed", params, socket) do
-    "357filj1mdzsqlg6fhbcleu272ka1b" |> IO.puts
-    "357filj1mdzsqlg6fhbcleu272ka1b" |> IO.puts
-    "357filj1mdzsqlg6fhbcleu272ka1b" |> IO.puts
-    params |> IO.inspect(limit: :infinity)
-    "==============================" |> IO.puts
-    socket |> IO.inspect(limit: :infinity)
-    "6mugwcjfp4kpqd9wd5dgzhenod93a6" |> IO.puts
-    "6mugwcjfp4kpqd9wd5dgzhenod93a6" |> IO.puts
-    "6mugwcjfp4kpqd9wd5dgzhenod93a6" |> IO.puts
+  def handle_event("tags-changed", %{"tags" => tags}, socket) do
+    send(self(), {:tags_changed, tags})
     {:noreply, socket}
   end
   

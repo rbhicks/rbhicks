@@ -31,6 +31,7 @@ defmodule RbhicksWeb.BlogPostLive.Form do
   def mount(params, _session, socket) do
     {:ok,
      socket
+     |> assign(:tags, [])
      |> assign(:return_to, return_to(params["return_to"]))
      |> apply_action(socket.assigns.live_action, params)}
   end
@@ -64,6 +65,15 @@ defmodule RbhicksWeb.BlogPostLive.Form do
 
   def handle_event("save", %{"blog_post" => blog_post_params}, socket) do
     save_blog_post(socket, socket.assigns.live_action, blog_post_params)
+  end
+
+  @impl true
+  def handle_info({:tags_changed, tags}, socket) do
+    {
+      :noreply,
+      socket
+      |> assign(:tags, tags)
+    }
   end
 
   defp save_blog_post(socket, :edit, blog_post_params) do
