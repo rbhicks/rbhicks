@@ -8,6 +8,7 @@ defmodule RbhicksWeb.MultiSelectComponentItem do
   @impl true
   def render(assigns) do
     ~H"""
+    <span>bloo</span>
     """
   end
 

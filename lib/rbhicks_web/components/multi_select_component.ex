@@ -4,11 +4,15 @@ defmodule RbhicksWeb.MultiSelectComponent do
   use Phoenix.LiveComponent
 
   alias RbhicksWeb.CoreComponents
+  alias RbhicksWeb.MultiSelectComponentItem
 
   @impl true
   def render(assigns) do
     ~H"""
     <div>
+      <div class="border-2 rounded-sm border-zinc-300 mb-0">
+        <.live_component module={MultiSelectComponentItem} id="wackadoo" />
+      </div>
       <CoreComponents.input type="select" name="tags" options={[:ack, :oop, :zorg]} prompt="select tag(s)" value="" phx-change="tags-changed" phx-target={@myself} />
     </div>
     """
