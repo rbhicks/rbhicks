@@ -8,7 +8,7 @@ defmodule RbhicksWeb.MultiSelectComponent do
   def render(assigns) do
     ~H"""
     <div>
-      <CoreComponents.input type="select" name="tags" options={[]} value={[:ack, :oop, :zorg]} />
+      <CoreComponents.input type="select" name="tags" options={[:ack, :oop, :zorg]} value="" />
     </div>
     """
   end
